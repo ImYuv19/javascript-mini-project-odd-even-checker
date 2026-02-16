@@ -1,14 +1,30 @@
- function check() {
-            let n = document.getElementById("num").value;
-            let m = document.getElementById("msg");
+function check() {
+    let input = document.getElementById("num").value.trim();
+    let msg = document.getElementById("msg");
 
-            if (n === "") return;
+    
+    const numberPattern = /^-?\d+$/;
 
-            if (n % 2 === 0) {
-                m.innerText = "Even";
-                m.style.color = "#4caf50";
-            } else {
-                m.innerText = "Odd";
-                m.style.color = "#f44336";
-            }
-        }
+    if (input === "") {
+        msg.innerText = "Please enter a number";
+        msg.style.color = "orange";
+        return;
+    }
+
+    if (!numberPattern.test(input)) {
+        msg.innerText = "Only integer numbers are allowed";
+        msg.style.color = "orange";
+        return;
+    }
+
+    const n = parseInt(input);
+
+    if (n % 2 === 0) {
+        msg.innerText = "Even";
+        msg.style.color = "#4caf50";
+    } else {
+        msg.innerText = "Odd";
+        msg.style.color = "#f44336";
+    }
+}
+
